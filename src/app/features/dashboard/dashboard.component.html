@@ -1,0 +1,124 @@
+<div class="main-layout">
+  <!-- Barra de Navegación Lateral -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <h1>Dashboard de Proyectos</h1>
+    <div class="header-actions">
+      <p class="welcome-text">Hola, Bienvenido de vuelta. Aquí están tus proyectos activos.</p>
+      <button class="btn btn-primary" (click)="openCreateModal()">+ Nuevo Proyecto</button>
+    </div>
+
+    <!-- Mensaje de error -->
+    @if (errorMessage()) {
+      <div class="error-message">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <!-- Loading state -->
+    @if (loading()) {
+      <div class="loading-container">
+        <p>Cargando proyectos...</p>
+      </div>
+    }
+
+    <!-- Lista de proyectos -->
+    @if (!loading() && projects().length > 0) {
+      <h2>Mis Proyectos</h2>
+      <div class="component-grid">
+        @for (project of projects(); track project.id) {
+          <div class="glass-container opportunity-card" (click)="goToProject(project.id!)">
+            <h3>{{ project.title }}</h3>
+            <p class="description">{{ project.description }}</p>
+            <div class="keywords">
+              @for (keyword of project.keywords; track keyword) {
+                <span class="keyword-tag">{{ keyword }}</span>
+              }
+            </div>
+            <div class="card-footer">
+              <span class="tag">Activo</span>
+              <span class="date">{{ formatDate(project.created_at!) }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Estado vacío -->
+    @if (!loading() && projects().length === 0) {
+      <div class="empty-state">
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+        </svg>
+        <h3>No tienes proyectos aún</h3>
+        <p>Crea tu primer proyecto para comenzar a buscar oportunidades</p>
+        <button class="btn btn-primary" (click)="openCreateModal()">Crear Proyecto</button>
+      </div>
+    }
+  </main>
+
+  <!-- Modal de Creación de Proyecto -->
+  @if (showModal()) {
+    <div class="modal-overlay active" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>Crear Nuevo Proyecto</h2>
+          <button class="close-button" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="createProject()">
+            <div class="form-group">
+              <label for="project-title">Título del Proyecto *</label>
+              <input 
+                type="text" 
+                id="project-title" 
+                class="glass-input" 
+                placeholder="Ej: Vigilancia de Fondos para IA"
+                [value]="newProject().title"
+                (input)="updateField('title', $any($event.target).value)"
+                required
+                [disabled]="modalLoading()">
+            </div>
+            <div class="form-group">
+              <label for="project-description">Descripción *</label>
+              <textarea 
+                id="project-description" 
+                class="glass-textarea" 
+                placeholder="Describe el objetivo principal de tu proyecto..."
+                [value]="newProject().description"
+                (input)="updateField('description', $any($event.target).value)"
+                required
+                [disabled]="modalLoading()"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="project-keywords">Palabras Clave (separadas por coma) *</label>
+              <input 
+                type="text" 
+                id="project-keywords" 
+                class="glass-input" 
+                placeholder="IA, financiamiento, investigación..."
+                [value]="keywordsInput()"
+                (input)="updateKeywordsInput($any($event.target).value)"
+                required
+                [disabled]="modalLoading()">
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()" [disabled]="modalLoading()">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary" [disabled]="modalLoading()">
+                @if (modalLoading()) {
+                  Guardando...
+                } @else {
+                  Guardar Proyecto
+                }
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  }
+</div>

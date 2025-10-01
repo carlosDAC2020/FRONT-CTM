@@ -1,0 +1,197 @@
+<div class="main-layout">
+  <!-- Barra de Navegación Lateral -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <!-- Botón de regreso -->
+    <button class="btn-back" (click)="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Volver al Dashboard
+    </button>
+
+    @if (loading()) {
+      <div class="loading-container">
+        <p>Cargando proyecto...</p>
+      </div>
+    }
+
+    @if (project()) {
+      <!-- Header del Proyecto -->
+      <div class="project-header">
+        <h1>{{ project()!.title }}</h1>
+        <p class="project-description">{{ project()!.description }}</p>
+        <div class="keywords">
+          @for (keyword of project()!.keywords; track keyword) {
+            <span class="keyword-tag">{{ keyword }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Panel de Acción: Iniciar Búsqueda -->
+      <div class="glass-container action-panel">
+        <p>
+          Inicia una nueva búsqueda de oportunidades basada en las palabras clave de tu proyecto.
+          El sistema utilizará IA para encontrar las mejores opciones de financiamiento.
+        </p>
+        <button 
+          class="btn btn-primary" 
+          (click)="startResearch()"
+          [disabled]="isResearching()">
+          @if (isResearching()) {
+            Buscando...
+          } @else {
+            🔍 Iniciar Búsqueda
+          }
+        </button>
+      </div>
+
+      <!-- Componente de Investigación en Progreso -->
+      @if (isResearching()) {
+        <div class="glass-container research-in-progress">
+          <div class="ai-brain-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+          </div>
+          <p id="status-message">{{ researchStatus() }}</p>
+          <div class="progress-bar-container">
+            <div id="progress-bar-inner" [style.width.%]="researchProgress()"></div>
+          </div>
+        </div>
+      }
+
+      <!-- Sistema de Pestañas -->
+      <div class="tabs-container">
+        <div class="tab-navigation">
+          <button 
+            class="tab-button"
+            [class.active]="activeTab() === 'opportunities'"
+            (click)="setActiveTab('opportunities')">
+            Oportunidades
+          </button>
+          <button 
+            class="tab-button"
+            [class.active]="activeTab() === 'research'"
+            (click)="setActiveTab('research')">
+            Historial de Búsquedas
+          </button>
+          <button 
+            class="tab-button"
+            [class.active]="activeTab() === 'notes'"
+            (click)="setActiveTab('notes')">
+            Notas
+          </button>
+        </div>
+
+        <!-- Contenido de Pestaña: Oportunidades -->
+        <div class="tab-content" [class.active]="activeTab() === 'opportunities'">
+          @if (currentResearch()?.opportunities && currentResearch()!.opportunities.length > 0) {
+            <div class="opportunities-grid">
+              @for (opportunity of currentResearch()!.opportunities; track opportunity.id) {
+                <div class="glass-container opportunity-card">
+                  <h3>{{ opportunity.origin }}</h3>
+                  <p class="source">{{ opportunity.type }}</p>
+                  <p class="description">{{ opportunity.description }}</p>
+                  <hr>
+                  <div class="opportunity-details">
+                    <div class="detail-row">
+                      <strong>Financiamiento:</strong>
+                      <span>{{ opportunity.financing }}</span>
+                    </div>
+                    <div class="detail-row">
+                      <strong>Fecha límite:</strong>
+                      <span>{{ formatDate(opportunity.deadline) }}</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <span class="tag">{{ opportunity.type }}</span>
+                    <a [href]="opportunity.url_to" target="_blank" class="link">Ver más &rarr;</a>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="empty-state">
+              <p>No hay oportunidades encontradas aún. Inicia una búsqueda para comenzar.</p>
+            </div>
+          }
+        </div>
+
+        <!-- Contenido de Pestaña: Historial de Búsquedas -->
+        <div class="tab-content" [class.active]="activeTab() === 'research'">
+          @if (researchList().length > 0) {
+            <div class="data-list">
+              @for (research of researchList(); track research.id) {
+                <div class="glass-container research-item">
+                  <div class="research-header">
+                    <h3>Búsqueda del {{ formatDate(research.date) }}</h3>
+                    <span class="status-tag" [class.status-success]="research.status === 'COMPLETED'" [class.status-failure]="research.status === 'FAILURE'">
+                      {{ research.status }}
+                    </span>
+                  </div>
+                  <div class="research-metrics">
+                    <div class="metric">
+                      <span class="metric-label">Tiempo de ejecución:</span>
+                      <span class="metric-value">{{ research.execute_time }}s</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric-label">Resultados iniciales:</span>
+                      <span class="metric-value">{{ research.initial_results_count }}</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric-label">Resultados relevantes:</span>
+                      <span class="metric-value">{{ research.relevant_results_count }}</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric-label">Oportunidades:</span>
+                      <span class="metric-value">{{ research.opportunities_found_count }}</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric-label">Ratio de relevancia:</span>
+                      <span class="metric-value">{{ research.relevance_ratio }}%</span>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="empty-state">
+              <p>No hay búsquedas realizadas aún.</p>
+            </div>
+          }
+        </div>
+
+        <!-- Contenido de Pestaña: Notas -->
+        <div class="tab-content" [class.active]="activeTab() === 'notes'">
+          @if (notes().length > 0) {
+            <div class="notes-list">
+              @for (note of notes(); track note.id) {
+                <div class="glass-container note-item">
+                  <div class="note-header">
+                    <h3>{{ note.title }}</h3>
+                    <span class="note-type">{{ note.type }}</span>
+                  </div>
+                  <p class="note-date">{{ formatDate(note.date!) }}</p>
+                  <p class="note-content">{{ note.content }}</p>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="empty-state">
+              <p>No hay notas para este proyecto.</p>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    @if (errorMessage()) {
+      <div class="error-message">
+        {{ errorMessage() }}
+      </div>
+    }
+  </main>
+</div>

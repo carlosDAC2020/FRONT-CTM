@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Componentes</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <h1>Galería de Componentes - FINCOR</h1>
+
+  <!-- Sección de Tarjetas -->
+  <section class="gallery-section">
+    <h2>1. Componente de Tarjeta (Opportunity Card)</h2>
+    <div class="component-grid">
+      <!-- Tarjeta Principal -->
+      <div class="glass-container opportunity-card">
+        <h3>Fondo para Innovación en IA</h3>
+        <p class="source">Publicado por: Tech Foundation</p>
+        <hr>
+        <p class="description">Oportunidad de financiamiento para proyectos que apliquen inteligencia artificial en energías renovables...</p>
+        <div class="card-footer">
+          <span class="tag">Internacional</span>
+          <a href="#" class="link">Ver Detalles &rarr;</a>
+        </div>
+      </div>
+      <!-- Otra Tarjeta -->
+      <div class="glass-container opportunity-card">
+        <h3>Beca de Investigación Nacional</h3>
+        <p class="source">Publicado por: Ministerio de Ciencia</p>
+        <hr>
+        <p class="description">Apoyo a jóvenes investigadores en ciencias sociales y humanidades. Se requiere afiliación institucional...</p>
+        <div class="card-footer">
+          <span class="tag">Nacional</span>
+          <a href="#" class="link">Ver Detalles &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Botones -->
+  <section class="gallery-section">
+    <h2>2. Botones</h2>
+    <div class="component-grid">
+      <button class="btn btn-primary">Botón Primario</button>
+      <button class="btn btn-secondary">Botón Secundario</button>
+    </div>
+  </section>
+
+  <!-- Sección de Formularios -->
+  <section class="gallery-section">
+    <h2>3. Campos de Formulario</h2>
+    <div class="component-grid" style="flex-direction: column; align-items: flex-start; max-width: 400px;">
+      <div class="form-group" style="width: 100%;">
+        <label for="projectName">Nombre del Proyecto</label>
+        <input type="text" id="projectName" class="glass-input" placeholder="Ej: Vigilancia Tecnológica">
+      </div>
+      <div class="form-group" style="width: 100%;">
+        <label for="keywords">Palabras Clave</label>
+        <input type="text" id="keywords" class="glass-input" placeholder="IA, financiamiento, investigación...">
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<div class="main-layout">
+  <!-- Barra de Navegación Lateral -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <h1>Historial de Investigaciones</h1>
+    <p class="subtitle">Consulta todas las búsquedas de oportunidades realizadas y sus resultados.</p>
+
+    @if (errorMessage()) {
+      <div class="error-message">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    @if (loading()) {
+      <div class="loading-container">
+        <p>Cargando investigaciones...</p>
+      </div>
+    }
+
+    @if (!loading() && researchList().length > 0) {
+      <div class="research-grid">
+        @for (research of researchList(); track research.id) {
+          <div class="glass-container research-card">
+            <div class="research-header">
+              <div>
+                <h3>{{ research.project_title }}</h3>
+                <p class="research-date">{{ formatDate(research.date) }}</p>
+              </div>
+              <span class="status-tag" [ngClass]="getStatusClass(research.status)">
+                {{ getStatusText(research.status) }}
+              </span>
+            </div>
+
+            <div class="research-metrics">
+              <div class="metric-card">
+                <div class="metric-icon">⏱️</div>
+                <div class="metric-info">
+                  <span class="metric-label">Tiempo</span>
+                  <span class="metric-value">{{ research.execute_time }}s</span>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-icon">📊</div>
+                <div class="metric-info">
+                  <span class="metric-label">Resultados</span>
+                  <span class="metric-value">{{ research.initial_results_count }}</span>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-icon">✅</div>
+                <div class="metric-info">
+                  <span class="metric-label">Relevantes</span>
+                  <span class="metric-value">{{ research.relevant_results_count }}</span>
+                </div>
+              </div>
+
+              <div class="metric-card highlight">
+                <div class="metric-icon">🎯</div>
+                <div class="metric-info">
+                  <span class="metric-label">Oportunidades</span>
+                  <span class="metric-value">{{ research.opportunities_found_count }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="research-ratios">
+              <div class="ratio-item">
+                <span class="ratio-label">Ratio de Relevancia:</span>
+                <div class="ratio-bar">
+                  <div class="ratio-fill" [style.width.%]="research.relevance_ratio"></div>
+                </div>
+                <span class="ratio-value">{{ research.relevance_ratio.toFixed(1) }}%</span>
+              </div>
+
+              <div class="ratio-item">
+                <span class="ratio-label">Ratio de Oportunidades:</span>
+                <div class="ratio-bar">
+                  <div class="ratio-fill success" [style.width.%]="research.opportunity_ratio"></div>
+                </div>
+                <span class="ratio-value">{{ research.opportunity_ratio.toFixed(1) }}%</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (!loading() && researchList().length === 0) {
+      <div class="empty-state">
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        <h3>No hay investigaciones realizadas</h3>
+        <p>Crea un proyecto e inicia una búsqueda para ver los resultados aquí</p>
+      </div>
+    }
+  </main>
+</div>

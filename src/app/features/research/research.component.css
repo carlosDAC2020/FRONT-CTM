@@ -1,0 +1,235 @@
+/* --- Layout Principal --- */
+.main-layout {
+  display: flex;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+}
+
+/* --- Header --- */
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #B0C4DE;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+/* --- Grid de Investigaciones --- */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+}
+
+.research-card {
+  padding: 25px;
+}
+
+/* --- Header de Tarjeta --- */
+.research-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 1rem;
+}
+
+.research-header h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.research-date {
+  color: #B0C4DE;
+  font-size: 0.85em;
+  margin: 0;
+}
+
+.status-tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-success {
+  background-color: rgba(46, 139, 87, 0.3);
+  color: #2E8B57;
+}
+
+.status-failure {
+  background-color: rgba(178, 34, 34, 0.3);
+  color: #B22222;
+}
+
+.status-progress {
+  background-color: rgba(255, 165, 0, 0.3);
+  color: #FFA500;
+}
+
+.status-pending {
+  background-color: rgba(128, 128, 128, 0.3);
+  color: #B0C4DE;
+}
+
+/* --- Métricas --- */
+.research-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-card.highlight {
+  background: rgba(0, 191, 255, 0.1);
+  border-color: rgba(0, 191, 255, 0.3);
+}
+
+.metric-icon {
+  font-size: 1.8rem;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric-label {
+  color: #B0C4DE;
+  font-size: 0.8em;
+}
+
+.metric-value {
+  color: #FFFFFF;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* --- Ratios --- */
+.research-ratios {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ratio-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ratio-label {
+  color: #B0C4DE;
+  font-size: 0.85em;
+  min-width: 150px;
+}
+
+.ratio-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ratio-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00BFFF, #0080FF);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.ratio-fill.success {
+  background: linear-gradient(90deg, #2E8B57, #90EE90);
+}
+
+.ratio-value {
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.9em;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* --- Estados --- */
+.error-message {
+  background-color: rgba(178, 34, 34, 0.3);
+  color: #ff6b6b;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(178, 34, 34, 0.5);
+}
+
+.loading-container {
+  text-align: center;
+  padding: 3rem;
+  color: #B0C4DE;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #B0C4DE;
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  margin-bottom: 2rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .research-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .ratio-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ratio-label {
+    min-width: auto;
+  }
+
+  .ratio-bar {
+    width: 100%;
+  }
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Proyecto - FINCOR</title>
+    <!-- Asegúrate que la ruta a tu CSS es correcta -->
+    <link rel="stylesheet" href="../css/styles.css"> 
+</head>
+<body>
+
+<div class="main-layout">
+    <!-- Barra de Navegación Lateral (Sidebar) -->
+    <aside class="sidebar glass-container">
+           <!-- 1. Encabezado con Información del Usuario -->
+        <header class="sidebar-header">
+            <div class="user-avatar">J</div>
+            <div class="user-info">
+                <p class="name">John Doe</p>
+                <p class="email">j.doe@cotecmar.com</p>
+            </div>
+        </header>
+
+        <!-- 2. Navegación Principal -->
+        <nav class="sidebar-nav">
+            <a href="./dashboard.html" class="active">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                <span>Búsqueda Global</span>
+            </a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.438.995s.145.755.438.995l1.003.827c.48.398.668 1.03.26 1.431l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.217-.456c-.355-.133-.75-.072-1.075.124a6.57 6.57 0 01-.22.127c-.331.183-.581.495-.645.87l-.213 1.281c-.09.543-.56.94-1.11.94h-2.593c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.063-.374-.313-.686-.645-.87a6.52 6.52 0 01-.22-.127c-.324-.196-.72-.257-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.437-.995s-.145-.755-.437-.995l-1.004-.827a1.125 1.125 0 01-.26-1.431l1.296-2.247a1.125 1.125 0 011.37-.49l1.217.456c.355.133.75.072 1.075-.124.072-.044.146-.087.22-.127.332-.183.582-.495.645-.87l.213-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                <span>Configuración</span>
+            </a>
+        </nav>
+
+        <!-- 3. Pie de Página con Logo -->
+        <footer class="sidebar-footer">
+            <!-- Coloca aquí el logo de COTECMAR o de tu App -->
+            <img src="https://i.imgur.com/8a1iS4V.png" alt="Logo" class="footer-logo">
+            <div class="footer-text">
+                <div class="app-name">FINCOR</div>
+                <div class="version">v1.0.0</div>
+            </div>
+        </footer> 
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <a href="./dashboard.html" style="color: #00BFFF; text-decoration: none;">&larr; Volver a Proyectos</a>
+        <h1>Proyecto: Vigilancia de Fondos para IA</h1>
+        <p>Este proyecto se centra en la búsqueda automatizada de oportunidades de financiamiento para investigaciones que utilizan inteligencia artificial. El objetivo es identificar convocatorias que se alineen con el desarrollo de algoritmos predictivos.</p>
+        
+        <!-- Panel de Acciones y Ejecución -->
+        <div id="action-panel" class="action-panel glass-container">
+            <p>Inicia una nueva búsqueda para encontrar oportunidades de financiamiento.</p>
+            <button id="start-research-btn" class="btn btn-primary">Iniciar Nueva Búsqueda</button>
+        </div>
+        
+        <!-- Componente de Ejecución (Oculto por defecto) -->
+        <div id="progress-state" class="research-in-progress glass-container" style="display: none;">
+            <div class="ai-brain-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 21v-1.5M12 5.25v-1.5m0 15v1.5m3.75-18v1.5m0 15v-1.5M5.25 12h1.5m10.5 0h1.5m-12-3.75h1.5m7.5 0h1.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a6 6 0 100-12 6 6 0 000 12z" /></svg></div>
+            <h2 id="status-message">Iniciando...</h2>
+            <div class="progress-bar-container"><div id="progress-bar-inner"></div></div>
+        </div>
+
+        <!-- Contenedor de Pestañas con Resultados -->
+        <div class="tabs-container">
+            <nav class="tab-navigation">
+                <button class="tab-button active" data-tab-target="#opportunities">Oportunidades</button>
+                <button class="tab-button" data-tab-target="#history">Historial de Búsquedas</button>
+                <button class="tab-button" data-tab-target="#context-items">Fuentes Analizadas</button>
+            </nav>
+
+            <div class="tab-content-wrapper">
+                <!-- Pestaña 1: Oportunidades -->
+                <div id="opportunities" class="tab-content active">
+                    <div class="component-grid">
+                        <div class="glass-container opportunity-card" data-modal-target="#details-modal">
+                            <h3>Fondo para Innovación en IA</h3>
+                            <p class="source">Publicado por: Tech Foundation</p><hr>
+                            <p class="description">Oportunidad para proyectos que apliquen IA en energías renovables...</p>
+                            <div class="card-footer">
+                                <span class="tag">Internacional</span><a href="#" class="link">Ver Detalles &rarr;</a></div>
+                        </div>
+                        <div class="glass-container opportunity-card" data-modal-target="#details-modal">
+                            <h3>Beca de Investigación Nacional</h3>
+                            <p class="source">Publicado por: Ministerio de Ciencia</p><hr>
+                            <p class="description">Apoyo a jóvenes investigadores en ciencias sociales y humanidades...</p>
+                            <div class="card-footer"><span class="tag">Nacional</span><a href="#" class="link">Ver Detalles &rarr;</a></div>
+                        </div>
+                        <div class="glass-container opportunity-card" data-modal-target="#details-modal">
+                            <h3>Grant for Open Source Software</h3>
+                            <p class="source">Publicado por: Linux Foundation</p><hr>
+                            <p class="description">Financiamiento para herramientas de código abierto que mejoren la seguridad...</p>
+                            <div class="card-footer"><span class="tag">Internacional</span><a href="#" class="link">Ver Detalles &rarr;</a></div>
+                        </div>
+                        <div class="glass-container opportunity-card" data-modal-target="#details-modal">
+                            <h3>Fondo para Innovación en IA</h3>
+                            <p class="source">Publicado por: Tech Foundation</p><hr>
+                            <p class="description">Oportunidad para proyectos que apliquen IA en energías renovables...</p>
+                            <div class="card-footer">
+                                <span class="tag">Internacional</span><a href="#" class="link">Ver Detalles &rarr;</a></div>
+                        </div>
+                        <div class="glass-container opportunity-card" data-modal-target="#details-modal">
+                            <h3>Beca de Investigación Nacional</h3>
+                            <p class="source">Publicado por: Ministerio de Ciencia</p><hr>
+                            <p class="description">Apoyo a jóvenes investigadores en ciencias sociales y humanidades...</p>
+                            <div class="card-footer"><span class="tag">Nacional</span><a href="#" class="link">Ver Detalles &rarr;</a></div>
+                        </div>
+                        <div class="glass-container opportunity-card" data-modal-target="#details-modal">
+                            <h3>Grant for Open Source Software</h3>
+                            <p class="source">Publicado por: Linux Foundation</p><hr>
+                            <p class="description">Financiamiento para herramientas de código abierto que mejoren la seguridad...</p>
+                            <div class="card-footer"><span class="tag">Internacional</span><a href="#" class="link">Ver Detalles &rarr;</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pestaña 2: Historial -->
+                <div id="history" class="tab-content data-list">
+                     <ul>
+                        <li class="data-list-item">
+                            <div><strong>Ejecución del 20/09/2025, 10:30 AM</strong><p style="margin: 5px 0 0 0; font-size: 0.9em; color: #B0C4DE;">Duración: 2m 15s</p></div>
+                            <span class="status-tag status-success">Completado</span>
+                        </li>
+                     </ul>
+                </div>
+                <!-- Pestaña 3: Context Items -->
+                <div id="context-items" class="tab-content data-list">
+                    <ul>
+                        <li class="data-list-item">
+                            <div><strong>Fuente: grants.gov</strong><p style="margin: 5px 0 0 0; font-size: 0.9em; color: #B0C4DE;">https://www.grants.gov/search-grants</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- ======== MODAL 1: DETALLES DE OPORTUNIDAD ======== -->
+<div id="details-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Detalles de la Oportunidad</h2>
+            <button class="close-button" data-close-button>&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="details-list">
+                <div class="detail-item">
+                    <span class="detail-key">Fecha Límite</span>
+                    <span class="detail-value">2024-09-15</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-key">Tipo de Financiación</span>
+                    <span class="detail-value">Grant</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-key">URL</span>
+                    <span class="detail-value"><a href="#" target="_blank">https://cmt3.research.microsoft.com/...</a></span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h4>Descripción</h4>
+                <p>Climate Change AI Innovation Grants 2024. Up to USD 150K per project...</p>
+            </div>
+
+            <div class="detail-section">
+                <h4>Requisitos Principales</h4>
+                <ul>
+                    <li>Principal Investigator affiliation with an accredited university.</li>
+                    <li>Project must address key issues related to climate change.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica del Sistema de Pestañas ---
+    const tabs = document.querySelectorAll('[data-tab-target]');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = document.querySelector(tab.dataset.tabTarget);
+            
+            tabContents.forEach(tc => tc.classList.remove('active'));
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            tab.classList.add('active');
+            target.classList.add('active');
+        });
+    });
+
+    // --- Lógica de la Simulación de Investigación ---
+    const startBtn = document.getElementById('start-research-btn');
+    const actionPanel = document.getElementById('action-panel');
+    const progressState = document.getElementById('progress-state');
+    const statusMessage = document.getElementById('status-message');
+    const progressBar = document.getElementById('progress-bar-inner');
+
+    startBtn.addEventListener('click', () => {
+        actionPanel.style.display = 'none';
+        progressState.style.display = 'flex';
+        
+        // **Clave: Cambiar a la pestaña de historial automáticamente**
+        document.querySelector('[data-tab-target="#history"]').click();
+        
+        simulateSseFlow();
+    });
+
+    function simulateSseFlow() {
+        const mockEvents = [
+            { details: { status: 'Inicializando Agente...', progress: 10 } },
+            { details: { status: 'Consultando fuentes web...', progress: 35 } },
+            { details: { status: 'Analizando resultados...', progress: 60 } },
+            { details: { status: 'Generando resumen con IA...', progress: 85 } },
+            { details: { status: 'Proceso finalizado.', progress: 100 } }
+        ];
+
+        let eventIndex = 0;
+        const interval = setInterval(() => {
+            if (eventIndex >= mockEvents.length) {
+                clearInterval(interval);
+                // Cuando termina, ocultamos el progreso y mostramos de nuevo el panel de acciones
+                setTimeout(() => {
+                    progressState.style.display = 'none';
+                    actionPanel.style.display = 'flex';
+                }, 1000); // Esperar 1 segundo antes de desaparecer
+                return;
+            }
+            const eventData = mockEvents[eventIndex];
+            statusMessage.textContent = eventData.details.status;
+            progressBar.style.width = eventData.details.progress + '%';
+            eventIndex++;
+        }, 1200);
+    }
+});
+</script>
+
+<script>
+        // SCRIPT  PARA LOS MODALES
+        document.addEventListener('DOMContentLoaded', () => {
+            const openModalButtons = document.querySelectorAll('[data-modal-target]');
+            const closeModalButtons = document.querySelectorAll('[data-close-button]');
+            const overlay = document.querySelectorAll('.modal-overlay');
+
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = document.querySelector(button.dataset.modalTarget);
+                    openModal(modal);
+                });
+            });
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal-overlay');
+                    closeModal(modal);
+                });
+            });
+
+            overlay.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+
+            function openModal(modal) {
+                if (modal == null) return;
+                modal.classList.add('active');
+            }
+
+            function closeModal(modal) {
+                if (modal == null) return;
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+
+
+</body>
+</html>
